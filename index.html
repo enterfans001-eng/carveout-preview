@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ライバー・クリエイターの活動を専門的にサポートするライバー事務所です。">
+  <title>CARVEOUT | ライバー事務所</title>
+  <link rel="stylesheet" href="css/style.css?v=20260520-flowentryapps1">
+  <style>
+    @media (min-width: 769px) {
+      .featured-liver-body {
+        box-sizing: border-box !important;
+        height: 100% !important;
+        padding: 20px !important;
+        position: relative !important;
+      }
+
+      .featured-liver-body .liver-name {
+        left: 20px !important;
+        margin: 0 !important;
+        position: absolute !important;
+        right: 20px !important;
+        top: 88px !important;
+        transform: none !important;
+      }
+
+      .featured-liver-body .liver-social-links {
+        bottom: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 10px !important;
+        left: 20px !important;
+        margin: 0 !important;
+        position: absolute !important;
+        top: 166px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+<a class="site-logo" href="index.html" aria-label="CARVEOUT トップへ">
+  <img src="assets/carveout-logo-white.png" alt="CARVEOUT">
+</a>
+  <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="siteMenu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="menu-backdrop" data-menu-close></div>
+  <nav class="site-menu" id="siteMenu" aria-label="メインナビゲーション">
+    <a href="news.html">NEWS</a>
+    <a href="index.html#livers">LIVER</a>
+    <a href="about-detail.html">ABOUT</a>
+    <a href="services.html">SUPPORT</a>
+    <a href="index.html#flow">FLOW</a>
+    <a href="contact.html">CONTACT</a>
+    <a class="site-menu-cta" href="contact.html">無料相談</a>
+  </nav>
+</header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">CARVEOUT LIVER AGENCY</p>
+        <h1>あなたの配信を、<br>仕事に変える。</h1>
+        <p class="hero-lead">初配信の準備からイベント戦略、ファンコミュニケーション、活動データの改善まで。継続できる活動を支えます。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="contact.html">ライバー相談をする</a>
+          <a class="btn btn-secondary" href="services.html">サポート内容を見る</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="ライブ配信画面のイメージ">
+        <div class="phone-mockup">
+          <div class="live-badge">17 LIVE</div>
+          <div class="avatar avatar-main"></div>
+          <div class="stream-title">新人イベント挑戦中</div>
+          <div class="comment comment-1">配信テーマを一緒に設計</div>
+          <div class="comment comment-2">ギフト導線も改善</div>
+          <div class="heart-stack">+17K</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="about-copy heading-inverted">
+        <p class="eyebrow">ABOUT</p>
+        <h2>カーブアウトとは？</h2>
+        <p>ライバー事務所「カーブアウト」には、さまざまなライブ配信アプリで活躍するライバー・クリエイターが所属しており、グループ全体で20,000名以上が所属しています。</p>
+        <a class="btn btn-secondary about-more" href="about-detail.html">詳細を見る</a>
+      </div>
+    </section>
+
+    <section id="event" class="section event-section">
+      <div class="section-heading">
+        <p class="eyebrow">EVENT</p>
+        <h2>事務所イベント</h2>
+      </div>
+      <div class="event-feature-wrap">
+        <div class="news-grid event-grid event-feature-grid" id="officeEventGrid" aria-live="polite"></div>
+      </div>
+      <div class="news-more">
+        <a class="btn btn-secondary" href="events.html">事務所イベントをもっと見る</a>
+      </div>
+    </section>
+
+    <section id="news" class="section news-section">
+      <div class="section-heading heading-inverted">
+        <p class="eyebrow">NEWS</p>
+        <h2>最新ニュース</h2>
+      </div>
+      <div class="news-carousel" aria-label="17LIVE関連の最新ニュース">
+        <div class="news-carousel-track" id="latestNewsTrack"></div>
+      </div>
+      <div class="news-more">
+        <a class="btn btn-secondary" href="news.html">すべてのニュースを見る</a>
+      </div>
+    </section>
+
+    <section id="application" class="section application-section">
+      <div class="section-heading heading-inverted">
+        <p class="eyebrow">APPLICATION</p>
+        <h2>配信アプリ</h2>
+      </div>
+      <div class="application-list" aria-label="対応配信アプリ">
+        <div class="application-item">
+          <img src="https://ccarveout.jp/wp-content/themes/carveout_2/images/v2/icon_big_17.png" alt="17LIVE">
+          <span>17LIVE</span>
+        </div>
+        <div class="application-item">
+          <img src="https://ccarveout.jp/wp-content/themes/carveout_2/images/v2/icon_big_bigo.png" alt="BIGOLIVE">
+          <span>BIGOLIVE</span>
+        </div>
+        <div class="application-item">
+          <img src="https://ccarveout.jp/wp-content/themes/carveout_2/images/app_icon_mixch.png" alt="ミクチャ">
+          <span>ミクチャ</span>
+        </div>
+        <div class="application-item">
+          <img src="https://ccarveout.jp/wp-content/themes/carveout_2/images/app_icon_whowach.png" alt="ふわっち">
+          <span>ふわっち</span>
+        </div>
+        <div class="application-item">
+          <img src="assets/palmu-icon.png" alt="Palmu">
+          <span>Palmu</span>
+        </div>
+        <div class="application-item">
+          <img src="assets/showroom-icon.png" alt="SHOWROOM">
+          <span>SHOWROOM</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="ranking" class="section ranking-section">
+      <div class="section-heading heading-inverted">
+        <p class="eyebrow">RANKING</p>
+        <h2>ライバーランキング</h2>
+      </div>
+
+      <div class="ranking-tabs" role="tablist" aria-label="ランキングアプリ">
+        <button class="ranking-tab is-active" type="button" data-ranking-platform="17live">
+          <img src="https://ccarveout.jp/wp-content/themes/carveout_2/images/v2/icon_big_17.png" alt="">
+          17LIVE
+        </button>
+        <button class="ranking-tab" type="button" data-ranking-platform="bigolive">
+          <img src="https://ccarveout.jp/wp-content/themes/carveout_2/images/v2/icon_big_bigo.png" alt="">
+          BIGOLIVE
+        </button>
+      </div>
+
+      <div class="ranking-platform is-active" data-ranking-platform-panel="17live">
+        <div class="ranking-subtabs" role="tablist" aria-label="17LIVEランキング種別">
+          <button class="ranking-subtab is-active" type="button" data-ranking-list="17live-total">総合</button>
+          <button class="ranking-subtab" type="button" data-ranking-list="17live-newcomer">新人</button>
+        </div>
+
+        <div class="ranking-block is-active" data-ranking-list-panel="17live-total">
+          <h4>総合ランキング</h4>
+          <div class="ranking-list">
+            <a class="ranking-card" href="https://17.live/s/u/43e81b67-a175-4fd4-9bf2-4a08bfd81c98?pid=17.live">
+              <span>1</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2026/02/潤🐬🎬JunChannel-.jpeg" alt="潤🐬🎬JunChannel">
+              <p>潤🐬🎬JunChannel</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/03b9f644-320b-413e-8d49-29bdaaf764f8?pid=17.live">
+              <span>2</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260513-171611.jpeg" alt="りの🥕🐰🌟">
+              <p>りの🥕🐰🌟</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/8d9e879e-9b52-444d-85a0-dc10aa87ef08?pid=17.live">
+              <span>3</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/04/20260105-103504.jpeg" alt="möco🪴🐈‍⬛">
+              <p>möco🪴🐈‍⬛</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/2947ced1-e524-4b87-8002-a10d742701d4?pid=17.live">
+              <span>4</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260513-171717.jpeg" alt="はるの🐰trombone🪊🌸">
+              <p>はるの🐰trombone🪊🌸</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/66d840a0-5949-4ac9-9a88-75c72ff00b52?pid=17.live">
+              <span>5</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20251205-161614.jpeg" alt="·̩͙꒰ঌ眞白真優🤍ྀི💍">
+              <p>·̩͙꒰ঌ眞白真優🤍ྀི💍</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="ranking-block" data-ranking-list-panel="17live-newcomer">
+          <h4>新人ランキング</h4>
+          <div class="ranking-list">
+            <a class="ranking-card" href="https://17.live/s/u/39de9aab-9536-4aa5-965f-936e1529eec4?pid=17.live">
+              <span>1</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260513-171855.jpeg" alt="yuzu_8yy（SSP所属）">
+              <p>yuzu_8yy（SSP所属）</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/82d0cd4f-d1d0-4d0b-97ab-fb10ae61b232?pid=17.live">
+              <span>2</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260407-114125.jpeg" alt="mizuha_lily">
+              <p>mizuha_lily</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/7d649fe7-6a60-4dd5-8d57-f857601b77b7?pid=17.live">
+              <span>3</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260513-171936.jpeg" alt="めいめい_0223">
+              <p>めいめい_0223</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/6a61974c-a636-4e16-a9c7-1dca72185748?pid=17.live">
+              <span>4</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260513-172038.jpeg" alt="ななna_tan2026">
+              <p>ななna_tan2026</p>
+            </a>
+            <a class="ranking-card" href="https://17.live/s/u/d6752c6f-6f04-43d1-8a03-276494abb79c?pid=17.live">
+              <span>5</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260513-172109.jpeg" alt="なつ_natsu72">
+              <p>なつ_natsu72</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ranking-platform" data-ranking-platform-panel="bigolive">
+        <div class="ranking-block is-active" data-ranking-list-panel="bigolive-total">
+          <h4>総合ランキング</h4>
+          <div class="ranking-list ranking-list-small">
+            <a class="ranking-card" href="https://www.bigo.tv/ja/user/902194547">
+              <span>1</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260407-115330.jpeg" alt="ちゃんまんにゃんᥬ👽ᩤ">
+              <p>ちゃんまんにゃんᥬ👽ᩤ</p>
+            </a>
+            <a class="ranking-card" href="https://www.bigo.tv/ja/user/1096118859">
+              <span>2</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260407-115434.jpg" alt="🌙LUNA🐶">
+              <p>🌙LUNA🐶</p>
+            </a>
+            <a class="ranking-card" href="https://www.bigo.tv/user/1073186957">
+              <span>3</span>
+              <img src="https://ccarveout.jp/wp-content/uploads/2025/07/20260513-170654.jpeg" alt="優香👗🌹Yuuka">
+              <p>優香👗🌹Yuuka</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="livers" class="section featured-liver-section">
+      <div class="section-heading heading-inverted">
+        <p class="eyebrow">LIVER</p>
+        <h2>所属ライバー紹介</h2>
+      </div>
+      <div class="featured-liver-carousel" aria-label="所属ライバー紹介">
+        <div class="featured-liver-track" id="featuredLiverTrack" aria-live="polite"></div>
+      </div>
+      <div class="news-more">
+        <a class="btn btn-secondary" href="livers.html">所属ライバーをもっと見る</a>
+      </div>
+    </section>
+
+    <section id="interview" class="section interview-section">
+      <div class="section-heading heading-inverted interview-heading">
+        <p class="eyebrow">INTERVIEW</p>
+        <h2>インタビュー</h2>
+      </div>
+      <div class="interview-panel">
+        <div class="interview-list">
+          <a class="interview-list-card" href="https://ccarveout.jp/liver-interview/3611/">
+            <img src="https://ccarveout.jp/wp-content/uploads/2024/01/20260402-185721.jpeg" alt="夢を追い続ける素晴らしさを発信していきたい">
+            <div>
+              <time datetime="2026-04-03">2026.04.03</time>
+              <h3>夢を追い続ける素晴らしさを発信していきたい</h3>
+            </div>
+          </a>
+          <a class="interview-list-card" href="https://ccarveout.jp/liver-interview/3521/">
+            <img src="https://ccarveout.jp/wp-content/uploads/2026/03/20260305-172905.jpeg" alt="みんなに幸せを届けられるようなライバーに">
+            <div>
+              <time datetime="2026-03-05">2026.03.05</time>
+              <h3>みんなに幸せを届けられるようなライバーに</h3>
+            </div>
+          </a>
+          <a class="interview-list-card" href="https://ccarveout.jp/liver-interview/3441/">
+            <img src="https://ccarveout.jp/wp-content/uploads/2026/02/20260217-143136.jpeg" alt="配信は、パン屋開業への第一歩だった">
+            <div>
+              <time datetime="2026-02-17">2026.02.17</time>
+              <h3>配信は、パン屋開業への第一歩だった</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="interview-more">
+        <a class="interview-more-button" href="https://ccarveout.jp/liver-Interview/">
+          <span>
+            インタビューをみる
+            <small>INTERVIEW LIST</small>
+          </span>
+          <b aria-hidden="true">→</b>
+        </a>
+      </div>
+    </section>
+
+    <section id="flow" class="section flow-section">
+      <div class="section-heading">
+        <p class="eyebrow">FLOW</p>
+        <h2>所属までの流れ</h2>
+      </div>
+      <ol class="flow-list">
+        <li>
+          <span>STEP 01</span>
+          <h3>無料相談</h3>
+          <p>配信経験、目標、活動できる時間をヒアリングします。</p>
+        </li>
+        <li>
+          <span>STEP 02</span>
+          <h3>活動プラン作成</h3>
+          <p>配信ジャンル、初月の目標、配信スケジュールを決めます。</p>
+        </li>
+        <li>
+          <span>STEP 03</span>
+          <h3>配信スタート</h3>
+          <p>初配信後も振り返りを行い、改善しながら活動を継続します。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="cta-section">
+      <div class="section-heading">
+        <p class="eyebrow">ENTRY</p>
+        <h2>ライバー・クリエイター<br>はじめる。はじまる。</h2>
+      </div>
+      <div class="entry-card-grid">
+        <article class="entry-card">
+          <h3>一緒に悩ませてください。<br>まずは話を聞くだけでも。</h3>
+          <a class="entry-button" href="https://l-tra.com/ad/LTR5NYQNMY" target="_blank" rel="noopener">
+            <span>
+              ライバーになる
+              <small>もちろん無料で相談随時募集中！</small>
+            </span>
+            <b aria-hidden="true">→</b>
+          </a>
+        </article>
+        <article class="entry-card">
+          <h3>あなたの身近にも<br>原石が埋もれていませんか？<br>サポートの仕方から教えます。</h3>
+          <a class="entry-button" href="https://line.me/R/ti/p/%40336ltmin?utm_source=Dms2uFwUAr" target="_blank" rel="noopener">
+            <span>
+              事務所を運営する
+              <small>加盟料・研修料など完全無料！</small>
+            </span>
+            <b aria-hidden="true">→</b>
+          </a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+  <div>
+    <strong>CARVEOUT</strong>
+    <p>&copy; 2026 CARVEOUT. All Rights Reserved.</p>
+  </div>
+  <div class="footer-links">
+    <nav aria-label="フッターナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="news.html">ニュース</a>
+      <a href="livers.html">所属ライバー</a>
+      <a href="events.html">事務所イベント</a>
+      <a href="benefit.html">所属特典</a>
+      <a href="message.html">代表メッセージ</a>
+      <a href="kabuu.html">公式キャラクター</a>
+      <a href="services.html">サービス</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <nav class="footer-subnav" aria-label="フッター補助ナビゲーション">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="compliance.html">コンプライアンス</a>
+      <a class="footer-company-link" href="about.html">運営会社<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6"></path><path d="M20 4 10 14"></path><path d="M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5"></path></svg></a>
+    </nav>
+  </div>
+</footer>
+
+  <script src="js/news-data.js?v=20260520-rankname1"></script>
+  <script src="js/event-data.js?v=20260520-rankname1"></script>
+  <script src="js/liver-data.js?v=20260520-rankname1"></script>
+  <script src="js/script.js?v=20260520-flowentryapps1"></script>
+  <script>
+    function alignPcLiverCards() {
+      if (window.innerWidth < 769) return;
+      document.querySelectorAll('.featured-liver-body').forEach((body) => {
+        const name = body.querySelector('.liver-name');
+        const links = body.querySelector('.liver-social-links');
+        Object.assign(body.style, {
+          boxSizing: 'border-box',
+          height: '100%',
+          padding: '20px',
+          position: 'relative'
+        });
+        if (name) {
+          Object.assign(name.style, {
+            left: '20px',
+            margin: '0',
+            position: 'absolute',
+            right: '20px',
+            top: '88px',
+            transform: 'none'
+          });
+        }
+        if (links) {
+          Object.assign(links.style, {
+            bottom: 'auto',
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '10px',
+            left: '20px',
+            margin: '0',
+            position: 'absolute',
+            top: '166px'
+          });
+        }
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      alignPcLiverCards();
+      window.setTimeout(alignPcLiverCards, 100);
+      window.setTimeout(alignPcLiverCards, 500);
+    });
+    window.addEventListener('resize', alignPcLiverCards);
+  </script>
+</body>
+</html>
