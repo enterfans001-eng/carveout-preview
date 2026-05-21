@@ -213,12 +213,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const newsItems = window.carveout17LiveNews || [];
+  const interviewItems = window.carveoutInterviews || [];
+
+  const getContentId = (url) => {
+    const match = String(url || '').match(/\/(\d+)\/?$/);
+    return match ? match[1] : '';
+  };
+
+  const getNewsDetailUrl = (item) => `news-detail.html?id=${getContentId(item.url)}`;
+  const getInterviewDetailUrl = (item) => `interview-detail.html?id=${item.id}`;
 
   const createNewsCard = (item) => {
     const card = document.createElement('a');
     card.className = 'news-card';
-    card.href = item.url;
-    card.rel = 'noopener';
+    card.href = getNewsDetailUrl(item);
 
     if (item.image) {
       const image = document.createElement('img');
@@ -249,6 +257,90 @@ document.addEventListener('DOMContentLoaded', () => {
     card.appendChild(body);
 
     return card;
+  };
+
+  const createInterviewCard = (item) => {
+    const card = document.createElement('a');
+    card.className = 'interview-list-card';
+    card.href = getInterviewDetailUrl(item);
+
+    const image = document.createElement('img');
+    image.src = item.image;
+    image.alt = item.title;
+    image.loading = 'lazy';
+
+    const body = document.createElement('div');
+    const time = document.createElement('time');
+    time.dateTime = item.datetime;
+    time.textContent = item.date;
+
+    const title = document.createElement('h3');
+    title.textContent = item.title;
+
+    body.append(time, title);
+    card.append(image, body);
+
+    return card;
+  };
+
+  const createDetailMarkup = (item, backHref, backText) => {
+    const fragment = document.createDocumentFragment();
+
+    if (!item) {
+      const title = document.createElement('h2');
+      title.textContent = '記事が見つかりませんでした';
+
+      const text = document.createElement('p');
+      text.textContent = '一覧ページからもう一度記事を選択してください。';
+
+      const back = document.createElement('a');
+      back.className = 'btn btn-secondary detail-back-link';
+      back.href = backHref;
+      back.textContent = backText;
+
+      fragment.append(title, text, back);
+      return fragment;
+    }
+
+    if (item.image) {
+      const image = document.createElement('img');
+      image.className = 'detail-hero-image';
+      image.src = item.image;
+      image.alt = item.title;
+      fragment.appendChild(image);
+    }
+
+    const meta = document.createElement('time');
+    meta.className = 'detail-date';
+    meta.dateTime = item.datetime;
+    meta.textContent = item.date;
+
+    const title = document.createElement('h2');
+    title.textContent = item.title;
+
+    const body = document.createElement('div');
+    body.className = 'detail-body';
+
+    const paragraphs = item.body && item.body.length
+      ? item.body
+      : [
+          'CARVEOUT所属ライバー・クリエイターの活動情報をお知らせします。',
+          item.title
+        ];
+
+    paragraphs.forEach((paragraph) => {
+      const text = document.createElement('p');
+      text.textContent = paragraph;
+      body.appendChild(text);
+    });
+
+    const back = document.createElement('a');
+    back.className = 'btn btn-secondary detail-back-link';
+    back.href = backHref;
+    back.textContent = backText;
+
+    fragment.append(meta, title, body, back);
+    return fragment;
   };
 
   const allNewsGrid = document.getElementById('allNewsGrid');
@@ -368,6 +460,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     latestNewsTrack.appendChild(fragment);
+  }
+
+  const newsDetail = document.getElementById('newsDetail');
+
+  if (newsDetail) {
+    const id = new URLSearchParams(window.location.search).get('id');
+    const item = newsItems.find((newsItem) => getContentId(newsItem.url) === id);
+    newsDetail.appendChild(createDetailMarkup(item, 'news.html', 'ニュース一覧へ戻る'));
+  }
+
+  const interviewArchiveList = document.getElementById('interviewArchiveList');
+
+  if (interviewArchiveList && Array.isArray(interviewItems)) {
+    const fragment = document.createDocumentFragment();
+
+    interviewItems.forEach((item) => {
+      fragment.appendChild(createInterviewCard(item));
+    });
+
+    interviewArchiveList.appendChild(fragment);
+  }
+
+  const interviewDetail = document.getElementById('interviewDetail');
+
+  if (interviewDetail) {
+    const id = new URLSearchParams(window.location.search).get('id');
+    const item = interviewItems.find((interviewItem) => interviewItem.id === id);
+    interviewDetail.appendChild(createDetailMarkup(item, 'interview.html', 'インタビュー一覧へ戻る'));
   }
 
   const createLiverCard = (item) => {
