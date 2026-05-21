@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const newsItems = window.carveout17LiveNews || [];
+  const eventItems = window.carveoutOfficeEventNews || [];
   const interviewItems = window.carveoutInterviews || [];
 
   const getContentId = (url) => {
@@ -402,10 +403,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (officeEventGrid) {
-    const eventItems = window.carveoutOfficeEventNews || newsItems.filter((item) => /事務所(?:内)?イベント/.test(item.title));
+    const topEventItems = eventItems.length ? eventItems : newsItems.filter((item) => /事務所(?:内)?イベント/.test(item.title));
     const fragment = document.createDocumentFragment();
 
-    eventItems.slice(0, 5).forEach((item) => {
+    topEventItems.slice(0, 5).forEach((item) => {
       fragment.appendChild(createNewsCard(item));
     });
 
@@ -413,7 +414,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (allEventGrid) {
-    const eventItems = window.carveoutOfficeEventNews || [];
     const years = [...new Set(eventItems.map((item) => getNewsYear(item.datetime)))];
     let activeYear = years[0];
 
@@ -474,9 +474,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (newsDetail) {
     const id = new URLSearchParams(window.location.search).get('id');
-    const item = newsItems.find((newsItem) => getContentId(newsItem.url) === id);
-    const detailHtml = (window.carveoutNewsDetails || {})[id] || '';
-    newsDetail.appendChild(createDetailMarkup(item, 'news.html', 'ニュース一覧へ戻る', detailHtml));
+    const item = [...newsItems, ...eventItems].find((contentItem) => getContentId(contentItem.url) === id);
+    const detailHtml = (window.carveoutNewsDetails || {})[id] || (window.carveoutEventDetails || {})[id] || '';
+    const isEventDetail = eventItems.some((contentItem) => getContentId(contentItem.url) === id);
+    newsDetail.appendChild(createDetailMarkup(
+      item,
+      isEventDetail ? 'events.html' : 'news.html',
+      isEventDetail ? 'イベント一覧へ戻る' : 'ニュース一覧へ戻る',
+      detailHtml
+    ));
   }
 
   const interviewArchiveList = document.getElementById('interviewArchiveList');

@@ -1807,10 +1807,11 @@ textarea {
 
 .detail-hero-image {
   aspect-ratio: 16 / 9;
+  background: var(--soft);
   border-radius: 8px;
   display: block;
   margin-bottom: clamp(22px, 4vw, 34px);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   width: 100%;
 }
