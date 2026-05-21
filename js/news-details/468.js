@@ -1,0 +1,1 @@
+window.carveoutCurrentDetailHtml = "<p>事務所内イベント『オリジナルグッズ制作権争奪戦！』は2023年11/01〜11/30の期間で、条件クリアされたライバー全員に、オリジナルグッズ制作権もがらえます！<\/p>\n\n<figure><img src=\"https://ccarveout.jp/wp-content/uploads/2024/02/image-90-1024x1024.webp\" alt=\"\" loading=\"lazy\"><\/figure>";

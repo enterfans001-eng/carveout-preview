@@ -1,0 +1,1 @@
+window.carveoutCurrentDetailHtml = "<p>芸能事務所カーブアウトは所属しているライバーの中でも、17LIVEにて配信しているライバー向けに「-カーブアウト-トーナメント王決定戦vol.2」を開催いたします。2024年07月26日0時0分から2024年07月27日23時59分までの期間で獲得BC(17LIVE内通貨のベイビーコイン)などでランキングが決まります。<\/p>\n\n<figure><img src=\"https://ccarveout.jp/wp-content/uploads/2024/07/img_v3_02ct_d0fde5f3-4bed-4d54-b900-c7bd7c7f35ix.png\" alt=\"\" loading=\"lazy\"><\/figure>";

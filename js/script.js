@@ -223,6 +223,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const getNewsDetailUrl = (item) => `news-detail.html?id=${getContentId(item.url)}`;
   const getInterviewDetailUrl = (item) => `interview-detail.html?id=${item.id}`;
+  const loadDetailHtml = (src) => new Promise((resolve) => {
+    if (!src) {
+      resolve('');
+      return;
+    }
+
+    window.carveoutCurrentDetailHtml = '';
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(window.carveoutCurrentDetailHtml || '');
+    script.onerror = () => resolve('');
+    document.head.appendChild(script);
+  });
 
   const createNewsCard = (item) => {
     const card = document.createElement('a');
@@ -475,14 +488,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (newsDetail) {
     const id = new URLSearchParams(window.location.search).get('id');
     const item = [...newsItems, ...eventItems].find((contentItem) => getContentId(contentItem.url) === id);
-    const detailHtml = (window.carveoutNewsDetails || {})[id] || (window.carveoutEventDetails || {})[id] || '';
     const isEventDetail = eventItems.some((contentItem) => getContentId(contentItem.url) === id);
-    newsDetail.appendChild(createDetailMarkup(
-      item,
-      isEventDetail ? 'events.html' : 'news.html',
-      isEventDetail ? 'イベント一覧へ戻る' : 'ニュース一覧へ戻る',
-      detailHtml
-    ));
+    loadDetailHtml(isEventDetail ? `js/event-details/${id}.js` : `js/news-details/${id}.js`).then((detailHtml) => {
+      newsDetail.appendChild(createDetailMarkup(
+        item,
+        isEventDetail ? 'events.html' : 'news.html',
+        isEventDetail ? 'イベント一覧へ戻る' : 'ニュース一覧へ戻る',
+        detailHtml
+      ));
+    });
   }
 
   const interviewArchiveList = document.getElementById('interviewArchiveList');
@@ -502,8 +516,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (interviewDetail) {
     const id = new URLSearchParams(window.location.search).get('id');
     const item = interviewItems.find((interviewItem) => interviewItem.id === id);
-    const detailHtml = (window.carveoutInterviewDetails || {})[id] || '';
-    interviewDetail.appendChild(createDetailMarkup(item, 'interview.html', 'インタビュー一覧へ戻る', detailHtml));
+    loadDetailHtml(`js/interview-details/${id}.js`).then((detailHtml) => {
+      interviewDetail.appendChild(createDetailMarkup(item, 'interview.html', 'インタビュー一覧へ戻る', detailHtml));
+    });
   }
 
   const createLiverCard = (item) => {

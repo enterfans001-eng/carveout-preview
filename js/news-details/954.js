@@ -1,0 +1,1 @@
+window.carveoutCurrentDetailHtml = "<p>『ANNS（あんず）』が、「17LIVE（ワンセブンライブ）」のイベント「ゆけ、トップライバーへの登竜門！vol.37」にてドラゴンチャレンジ、レベル46〜50部門で1位入賞しました！<\/p>\n\n<figure><img src=\"https://ccarveout.jp/wp-content/uploads/2024/02/image-385-1024x1001.webp\" alt=\"\" loading=\"lazy\"><\/figure>\n\n<p>17LIVE ID：ANNS🩰👑💕あんず<\/p>\n\n<figure><div>\nhttps://17.live/ja/profile/r/15270773\n<\/div><\/figure>";
