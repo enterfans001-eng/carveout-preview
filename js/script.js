@@ -325,12 +325,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const initFloatingEntryCta = () => {
+    if (document.querySelector('.floating-entry-cta')) {
+      return;
+    }
+
+    const cta = document.createElement('a');
+    cta.className = 'floating-entry-cta';
+    cta.href = 'audition.html';
+    cta.setAttribute('aria-label', 'ライバー募集ページを見る');
+    cta.innerHTML = `
+      <span class="floating-entry-cta__eyebrow">LIVER ENTRY</span>
+      <span class="floating-entry-cta__title">ライバー募集</span>
+      <span class="floating-entry-cta__arrow" aria-hidden="true">→</span>
+    `;
+
+    document.body.appendChild(cta);
+  };
+
   initSiteMenu();
   initIdleCursor();
   initCursorSparkles();
   initCardSparkles();
   initHeadingReveal();
   initAuditionFaq();
+  initFloatingEntryCta();
 
   const rankingPlatformTabs = document.querySelectorAll('[data-ranking-platform]');
   const rankingPlatformPanels = document.querySelectorAll('[data-ranking-platform-panel]');
