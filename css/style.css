@@ -4370,6 +4370,7 @@ body::after {
     0 18px 44px rgba(37, 37, 139, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.92);
   color: var(--blue);
+  --floating-entry-motion: 0px;
   display: grid;
   gap: 2px 12px;
   grid-template-columns: 1fr 34px;
@@ -4378,11 +4379,12 @@ body::after {
   padding: 14px 14px 14px 18px;
   position: fixed;
   right: clamp(16px, 3vw, 34px);
-  transform: rotate(-2deg);
+  transform: translateY(var(--floating-entry-motion)) rotate(-2deg);
   transition:
     box-shadow 0.24s ease,
-    opacity 0.22s ease,
-    transform 0.24s ease;
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    visibility 0.45s ease;
   z-index: 86;
 }
 
@@ -4459,22 +4461,25 @@ body::after {
   box-shadow:
     0 22px 54px rgba(37, 37, 139, 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.96);
-  transform: translateY(-3px) rotate(-2deg);
+  transform: translateY(calc(var(--floating-entry-motion) - 3px)) rotate(-2deg);
 }
 
-.is-menu-open .floating-entry-cta {
+.is-menu-open .floating-entry-cta,
+.floating-entry-cta.is-floating-entry-hidden {
+  --floating-entry-motion: 14px;
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 @keyframes floatingEntryLift {
   0%,
   100% {
-    transform: translateY(0) rotate(-2deg);
+    transform: translateY(var(--floating-entry-motion)) rotate(-2deg);
   }
 
   50% {
-    transform: translateY(-7px) rotate(-2deg);
+    transform: translateY(calc(var(--floating-entry-motion) - 7px)) rotate(-2deg);
   }
 }
 

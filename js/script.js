@@ -341,6 +341,38 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
     document.body.appendChild(cta);
+
+    const hiddenTargets = Array.from(document.querySelectorAll('.hero, .footer'));
+
+    if (!hiddenTargets.length) {
+      return;
+    }
+
+    let ticking = false;
+
+    const updateVisibility = () => {
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const shouldHide = hiddenTargets.some((target) => {
+        const rect = target.getBoundingClientRect();
+        return rect.top < viewportHeight && rect.bottom > 0;
+      });
+
+      cta.classList.toggle('is-floating-entry-hidden', shouldHide);
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (ticking) {
+        return;
+      }
+
+      ticking = true;
+      window.requestAnimationFrame(updateVisibility);
+    };
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    updateVisibility();
   };
 
   initSiteMenu();
