@@ -2914,7 +2914,20 @@ textarea {
   }
 
   .news-carousel {
+    overflow: visible;
     scrollbar-width: none;
+  }
+
+  .news-carousel-track {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .news-carousel .news-card {
+    flex: none;
+    min-width: 0;
   }
 
   .news-carousel::-webkit-scrollbar {
