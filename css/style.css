@@ -2912,6 +2912,15 @@ textarea {
     animation: none;
     transform: none;
   }
+
+  .news-carousel {
+    scrollbar-width: none;
+  }
+
+  .news-carousel::-webkit-scrollbar {
+    display: none;
+    height: 0;
+  }
 }
 
 @media (max-width: 620px) {

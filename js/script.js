@@ -635,6 +635,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = new URLSearchParams(window.location.search).get('id');
     const item = [...newsItems, ...eventItems].find((contentItem) => getContentId(contentItem.url) === id);
     const isEventDetail = eventItems.some((contentItem) => getContentId(contentItem.url) === id);
+    const detailPageEyebrow = document.getElementById('detailPageEyebrow');
+    const detailPageTitle = document.getElementById('detailPageTitle');
+
+    if (isEventDetail) {
+      if (detailPageEyebrow) {
+        detailPageEyebrow.textContent = 'EVENT';
+      }
+
+      if (detailPageTitle) {
+        detailPageTitle.textContent = 'イベント詳細';
+      }
+
+      document.title = 'イベント詳細 | CARVEOUT';
+    }
+
     loadDetailHtml(isEventDetail ? `js/event-details/${id}.js` : `js/news-details/${id}.js`).then((detailHtml) => {
       newsDetail.appendChild(createDetailMarkup(
         item,
