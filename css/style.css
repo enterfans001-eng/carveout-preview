@@ -1761,7 +1761,11 @@ textarea {
 }
 
 .character-header .eyebrow {
-  color: #fff;
+  color: var(--blue) !important;
+}
+
+.character-copy .eyebrow {
+  color: var(--blue) !important;
 }
 
 .character-hero {
@@ -1774,18 +1778,18 @@ textarea {
 }
 
 .character-copy {
-  color: #fff;
+  color: var(--blue);
 }
 
 .character-copy h2 {
-  color: #fff;
+  color: var(--blue);
   font-size: clamp(2rem, 4.5vw, 4.6rem);
   letter-spacing: 0;
   line-height: 1.12;
 }
 
 .character-copy p:not(.eyebrow) {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(23, 23, 42, 0.72);
   margin-top: 22px;
   max-width: 680px;
 }
