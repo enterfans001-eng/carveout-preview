@@ -25,6 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
       target.addEventListener('click', () => setMenu(false));
     });
 
+    document.addEventListener('pointerdown', (event) => {
+      if (!document.documentElement.classList.contains('is-menu-open')) {
+        return;
+      }
+
+      if (menu.contains(event.target) || toggle.contains(event.target)) {
+        return;
+      }
+
+      setMenu(false);
+    });
+
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         setMenu(false);
