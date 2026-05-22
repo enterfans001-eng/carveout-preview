@@ -4538,3 +4538,15 @@ body::after {
     max-width: min(88vw, 360px);
   }
 }
+
+/* Ensure the ABOUT portrait renders immediately across mobile browsers. */
+.about-section {
+  content-visibility: visible;
+  contain-intrinsic-size: auto;
+}
+
+.about-section .about-inner,
+.about-visual,
+.about-visual img {
+  visibility: visible;
+}
