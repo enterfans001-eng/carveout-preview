@@ -6609,7 +6609,7 @@ html.is-touch-device .partner-merit-section .audition-card p {
     height: 100%;
     transform: translate3d(0, 0, 0);
     transition: transform 0.06s linear, width 0.12s ease;
-    width: 36px;
+    width: 86px;
   }
 
   .mobile-progressbar.is-scrollbar-hidden {

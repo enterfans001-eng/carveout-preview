@@ -939,10 +939,24 @@ document.addEventListener('DOMContentLoaded', () => {
       return bar;
     };
 
+    const getTargetMaxScroll = (scroller) => {
+      const maxNativeScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+      const cards = [...scroller.querySelectorAll('.news-card, .featured-liver-card')]
+        .filter((card) => window.getComputedStyle(card).display !== 'none');
+      const lastCard = cards[cards.length - 1];
+
+      if (!lastCard) {
+        return maxNativeScroll;
+      }
+
+      const targetScroll = lastCard.offsetLeft + lastCard.offsetWidth - scroller.clientWidth;
+      return Math.max(0, Math.min(maxNativeScroll, targetScroll));
+    };
+
     const updateScroller = (scroller) => {
       const bar = setBar(scroller);
       const thumb = bar.querySelector('span');
-      const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+      const maxScroll = getTargetMaxScroll(scroller);
 
       if (!thumb || maxScroll <= 1) {
         bar.classList.add('is-scrollbar-hidden');
@@ -952,8 +966,8 @@ document.addEventListener('DOMContentLoaded', () => {
       bar.classList.remove('is-scrollbar-hidden');
 
       const progress = Math.min(1, Math.max(0, scroller.scrollLeft / maxScroll));
-      const visibleRatio = Math.min(1, scroller.clientWidth / scroller.scrollWidth);
-      const thumbWidth = Math.max(36, Math.round(bar.clientWidth * Math.max(0.16, visibleRatio)));
+      const visibleRatio = Math.min(1, scroller.clientWidth / (maxScroll + scroller.clientWidth));
+      const thumbWidth = Math.max(86, Math.round(bar.clientWidth * Math.max(0.34, visibleRatio)));
       const thumbLeft = Math.round((bar.clientWidth - thumbWidth) * progress);
 
       thumb.style.width = `${thumbWidth}px`;
