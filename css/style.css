@@ -5136,6 +5136,20 @@ body::after {
   color: rgba(23, 23, 42, 0.72);
 }
 
+.about-text {
+  display: grid;
+  gap: clamp(14px, 1.7vw, 18px);
+}
+
+.about-text p {
+  margin: 0;
+}
+
+.about-text .about-more {
+  justify-self: start;
+  margin-top: clamp(8px, 1.6vw, 14px);
+}
+
 .about-section .about-inner {
   grid-template-columns: minmax(0, 0.98fr) minmax(280px, 470px);
 }
@@ -5299,13 +5313,28 @@ body::after {
 }
 
 .ranking-card:first-child {
-  background:
-    radial-gradient(circle at 78% 10%, rgba(223, 248, 255, 0.76), transparent 32%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(245, 251, 255, 0.88));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.94));
   grid-column: 1 / -1;
   grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
   min-height: 250px;
   padding: 18px;
+}
+
+.ranking-card:first-child {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 255, 0.94)) !important;
+}
+
+.ranking-card:first-child::after {
+  background:
+    linear-gradient(100deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.08) 44%,
+      rgba(255, 255, 255, 0.42) 50%,
+      rgba(255, 255, 255, 0.12) 57%,
+      transparent 72%,
+      transparent 100%);
 }
 
 .ranking-card:first-child img {
@@ -5480,16 +5509,56 @@ body::after {
   }
 
   .about-section .about-copy {
+    display: contents;
     max-width: none;
     min-width: 0;
     width: 100%;
+  }
+
+  .about-section .about-copy::before {
+    content: none;
+  }
+
+  .about-section .about-copy .eyebrow {
+    order: 1;
+    width: 100%;
+  }
+
+  .about-section .about-copy h2 {
+    order: 2;
+    width: 100%;
+  }
+
+  .about-section .about-visual {
+    order: 3;
   }
 
   .about-section .about-copy p:not(.eyebrow) {
     line-break: strict;
     max-width: none;
     overflow-wrap: anywhere;
+    width: 100%;
     word-break: normal;
+  }
+
+  .about-section .about-text {
+    order: 4;
+    width: 100%;
+  }
+
+  .about-section .about-copy .eyebrow {
+    position: relative;
+  }
+
+  .about-section .about-copy .eyebrow::before {
+    background: linear-gradient(180deg, rgba(37, 37, 139, 0.88), rgba(223, 248, 255, 0.28));
+    border-radius: 999px;
+    content: "";
+    height: clamp(108px, 26vw, 136px);
+    left: -16px;
+    position: absolute;
+    top: 0;
+    width: 3px;
   }
 }
 
@@ -5648,12 +5717,8 @@ body::after {
 }
 
 @media (max-width: 900px) {
-  .about-section .about-copy {
-    order: 2;
-  }
-
   .about-visual {
-    order: 1;
+    order: 3;
   }
 }
 
