@@ -6462,7 +6462,10 @@ body::after {
     color: rgba(20, 22, 42, 0.74);
     font-size: clamp(0.9rem, 3.8vw, 0.98rem);
     line-height: 1.85;
-    max-width: none;
+    left: 50%;
+    max-width: min(86vw, 360px);
+    text-align: center;
+    transform: translateX(-50%) !important;
     white-space: nowrap;
     top: clamp(340px, 86vw, 430px);
   }
@@ -6470,8 +6473,10 @@ body::after {
   .audition-header > .audition-main-button {
     bottom: auto;
     justify-content: center;
+    left: 50%;
     min-height: 58px;
     padding-inline: 24px;
+    transform: translateX(-50%) !important;
     top: clamp(420px, 107vw, 520px);
     width: min(82vw, 320px);
   }
