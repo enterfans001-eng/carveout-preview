@@ -27,6 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const startedAt = performance.now();
     let isDone = false;
 
+    if (!loader) {
+      return;
+    }
+
+    try {
+      if (sessionStorage.getItem('carveoutTopLoaderSeen') === '1') {
+        document.documentElement.classList.add('is-site-loader-skipped', 'is-site-loader-done');
+        loader.remove();
+        return;
+      }
+    } catch (error) {}
+
     heroVideos.forEach((video) => {
       try {
         video.pause();
@@ -67,12 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       isDone = true;
+      try {
+        sessionStorage.setItem('carveoutTopLoaderSeen', '1');
+      } catch (error) {}
       document.documentElement.classList.add('is-site-loader-done');
       playHeroVideos();
 
-      if (loader) {
-        window.setTimeout(() => loader.remove(), 900);
-      }
+      window.setTimeout(() => loader.remove(), 900);
     };
 
     const finishAfterMinimum = () => {

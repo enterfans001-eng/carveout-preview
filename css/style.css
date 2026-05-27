@@ -146,6 +146,10 @@ html.is-site-loader-done .site-loader {
   visibility: hidden;
 }
 
+html.is-site-loader-skipped .site-loader {
+  display: none;
+}
+
 @keyframes siteLoaderProgress {
   0% {
     transform: scaleX(0);
@@ -6402,7 +6406,7 @@ body::after {
 
 @media (max-width: 900px) {
   .audition-header {
-    min-height: clamp(430px, 118vw, 560px);
+    min-height: clamp(500px, 135vw, 620px);
     overflow: hidden;
     padding: 0;
   }
@@ -6416,7 +6420,7 @@ body::after {
     height: 100%;
     inset: 0;
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
     position: absolute !important;
     transform: none;
     width: 100%;
@@ -6435,7 +6439,7 @@ body::after {
   }
 
   .audition-header > .eyebrow {
-    top: clamp(132px, 34vw, 178px);
+    top: clamp(116px, 29vw, 158px);
   }
 
   .audition-header > h1 {
@@ -6444,22 +6448,22 @@ body::after {
     max-width: calc(100% - 48px);
     text-wrap: nowrap;
     white-space: nowrap;
-    top: clamp(198px, 50vw, 258px);
+    top: clamp(178px, 44vw, 234px);
   }
 
   .audition-header > p {
     color: rgba(20, 22, 42, 0.74);
     font-size: clamp(0.92rem, 3.55vw, 1.02rem);
     line-height: 1.7;
-    max-width: min(70vw, 310px);
-    top: clamp(244px, 61vw, 318px);
+    max-width: min(66vw, 300px);
+    top: clamp(220px, 55vw, 292px);
   }
 
   .audition-header > .audition-main-button {
     bottom: auto;
     min-height: 56px;
     padding-inline: 26px;
-    top: clamp(346px, 90vw, 430px);
+    top: clamp(362px, 94vw, 474px);
     width: fit-content;
   }
 
