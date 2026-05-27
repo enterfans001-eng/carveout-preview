@@ -6815,3 +6815,120 @@ html.is-touch-device .partner-merit-section .audition-card p {
     display: none;
   }
 }
+
+.related-office-section {
+  overflow: hidden;
+  padding-top: clamp(58px, 7vw, 96px);
+}
+
+.related-office-grid {
+  display: grid;
+  gap: clamp(18px, 2.2vw, 28px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: 1160px;
+}
+
+.related-office-card {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(244, 251, 255, 0.78));
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  box-shadow:
+    0 24px 58px rgba(37, 37, 139, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2vw, 24px);
+  min-height: clamp(260px, 24vw, 340px);
+  overflow: hidden;
+  padding: clamp(22px, 2.6vw, 34px);
+  position: relative;
+}
+
+.related-office-card::before {
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.72) 46%, transparent 68%);
+  content: "";
+  inset: 0;
+  opacity: 0.52;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-68%);
+}
+
+.related-office-card:hover::before {
+  animation: cardSheen 1.9s ease;
+}
+
+@keyframes cardSheen {
+  0% {
+    transform: translateX(-72%);
+  }
+
+  100% {
+    transform: translateX(72%);
+  }
+}
+
+.related-office-card p {
+  color: var(--blue);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  font-weight: 800;
+  line-height: 1.55;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.related-office-logo {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(37, 37, 139, 0.08);
+  border-radius: 10px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-height: 155px;
+  padding: clamp(18px, 2vw, 28px);
+  position: relative;
+  z-index: 1;
+}
+
+.related-office-logo-dark {
+  background: #020205;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.related-office-logo img {
+  display: block;
+  max-height: 150px;
+  max-width: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .related-office-section {
+    padding-top: 58px;
+  }
+
+  .related-office-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-office-card {
+    gap: 16px;
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .related-office-logo {
+    min-height: 126px;
+    padding: 18px;
+  }
+
+  .related-office-logo img {
+    max-height: 108px;
+  }
+}
