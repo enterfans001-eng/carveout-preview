@@ -6934,3 +6934,23 @@ html.is-touch-device .partner-merit-section .audition-card p {
     max-height: 108px;
   }
 }
+
+/* WordPress converts emoji to inline images. Keep those from inheriting ranking photo styles. */
+.ranking-card img.emoji,
+.ranking-card img.wp-smiley,
+.ranking-card p img,
+.ranking-card h3 img,
+.ranking-card h4 img {
+  aspect-ratio: auto !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: inline-block !important;
+  height: 1em !important;
+  margin: 0 0.04em !important;
+  max-height: 1em !important;
+  max-width: 1em !important;
+  object-fit: contain !important;
+  padding: 0 !important;
+  vertical-align: -0.12em !important;
+  width: 1em !important;
+}
