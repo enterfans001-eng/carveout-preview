@@ -242,6 +242,25 @@ function carveout_theme_format_date(int $post_id): array
     ];
 }
 
+function carveout_theme_text_is_office_event(string $title, string $content): bool
+{
+    $haystack = $title . "\n" . $content;
+
+    return strpos($haystack, '事務所イベント') !== false
+        || (
+            strpos($haystack, '17LIVEにて配信している') !== false
+            && strpos($haystack, 'イベント') !== false
+        );
+}
+
+function carveout_theme_text_has_excluded_platform(string $title, string $content): bool
+{
+    $haystack = strtolower($title . "\n" . $content);
+
+    return strpos($haystack, 'tiktok') !== false
+        || strpos($haystack, 'pococha') !== false;
+}
+
 function carveout_theme_get_cms_posts(string $post_type, int $limit = -1): array
 {
     $query = new WP_Query([
@@ -255,17 +274,33 @@ function carveout_theme_get_cms_posts(string $post_type, int $limit = -1): array
     $items = [];
 
     foreach ($query->posts as $post) {
+        $post_title = get_the_title($post);
+        $post_content_text = wp_strip_all_tags((string) $post->post_content);
+
+        if (
+            in_array($post_type, ['carveout_news', 'carveout_event', 'carveout_interview'], true)
+            && carveout_theme_text_has_excluded_platform($post_title, $post_content_text)
+        ) {
+            continue;
+        }
+
+        if (
+            $post_type === 'carveout_news'
+            && carveout_theme_text_is_office_event($post_title, $post_content_text)
+        ) {
+            continue;
+        }
+
         $date = carveout_theme_format_date($post->ID);
         $source_url = (string) get_post_meta($post->ID, 'carveout_source_url', true);
-        $detail_slug = $post_type === 'carveout_interview' ? 'interview-detail' : 'news-detail';
 
         $items[] = [
             'id' => (string) $post->ID,
             'date' => $date['date'],
             'datetime' => $date['datetime'],
-            'title' => get_the_title($post),
+            'title' => $post_title,
             'url' => $source_url ?: get_permalink($post),
-            'detailUrl' => home_url('/' . $detail_slug . '/?id=' . $post->ID),
+            'detailUrl' => add_query_arg('id', $post->ID, get_permalink($post)),
             'image' => carveout_theme_post_image_url($post->ID),
             'body' => array_values(array_filter([wp_strip_all_tags(get_the_excerpt($post))])),
             'detailHtml' => apply_filters('the_content', $post->post_content),
@@ -537,19 +572,21 @@ function carveout_theme_import_source_item(string $source_type, array $config, a
 
 function carveout_theme_should_import_source_item(array $config, array $item): bool
 {
+    $title = wp_strip_all_tags((string) ($item['title']['rendered'] ?? ''));
+    $content = wp_strip_all_tags((string) ($item['content']['rendered'] ?? ''));
+
+    if (
+        in_array(($config['post_type'] ?? ''), ['carveout_news', 'carveout_event', 'carveout_interview'], true)
+        && carveout_theme_text_has_excluded_platform($title, $content)
+    ) {
+        return false;
+    }
+
     if (($config['filter'] ?? '') !== 'office_event_news') {
         return true;
     }
 
-    $title = wp_strip_all_tags((string) ($item['title']['rendered'] ?? ''));
-    $content = wp_strip_all_tags((string) ($item['content']['rendered'] ?? ''));
-    $haystack = $title . "\n" . $content;
-
-    return strpos($haystack, '事務所イベント') !== false
-        || (
-            strpos($haystack, '17LIVEにて配信している') !== false
-            && strpos($haystack, 'イベント') !== false
-        );
+    return carveout_theme_text_is_office_event($title, $content);
 }
 
 function carveout_theme_run_source_import(string $source_type): array

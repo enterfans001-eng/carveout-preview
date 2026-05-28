@@ -3,5 +3,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-wp_safe_redirect(home_url('/news-detail/?id=' . get_the_ID()), 302);
-exit;
+if (!isset($_GET['id'])) {
+    wp_safe_redirect(add_query_arg('id', get_the_ID(), get_permalink()), 302);
+    exit;
+}
+
+require get_template_directory() . '/page-news-detail.php';
