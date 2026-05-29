@@ -15,6 +15,21 @@ function carveout_theme_setup(): void
 }
 add_action('after_setup_theme', 'carveout_theme_setup');
 
+function carveout_theme_disable_wp_emoji(): void
+{
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+
+    add_filter('emoji_svg_url', '__return_false');
+    add_filter('option_use_smilies', '__return_false');
+}
+add_action('init', 'carveout_theme_disable_wp_emoji');
+
 function carveout_theme_asset(string $path): string
 {
     return esc_url(get_template_directory_uri() . '/' . ltrim($path, '/'));
@@ -28,6 +43,18 @@ function carveout_theme_page_url(string $slug = ''): string
         return esc_url(home_url('/'));
     }
     return esc_url(home_url('/' . $slug . '/'));
+}
+
+function carveout_theme_first_post_meta(int $post_id, array $keys): string
+{
+    foreach ($keys as $key) {
+        $value = trim((string) get_post_meta($post_id, $key, true));
+        if ($value !== '') {
+            return $value;
+        }
+    }
+
+    return '';
 }
 
 function carveout_theme_static_page_templates(): array
@@ -580,6 +607,12 @@ function carveout_theme_text_has_excluded_platform(string $title, string $conten
 
 function carveout_theme_get_cms_posts(string $post_type, int $limit = -1): array
 {
+    $detail_pages = [
+        'carveout_news' => 'news-detail',
+        'carveout_event' => 'news-detail',
+        'carveout_interview' => 'interview-detail',
+    ];
+
     $query = new WP_Query([
         'post_type' => $post_type,
         'post_status' => 'publish',
@@ -610,6 +643,10 @@ function carveout_theme_get_cms_posts(string $post_type, int $limit = -1): array
 
         $date = carveout_theme_format_date($post->ID);
         $source_url = (string) get_post_meta($post->ID, 'carveout_source_url', true);
+        $detail_page = $detail_pages[$post_type] ?? '';
+        $detail_url = $detail_page
+            ? add_query_arg('id', $post->ID, carveout_theme_page_url($detail_page))
+            : add_query_arg('id', $post->ID, get_permalink($post));
 
         $items[] = [
             'id' => (string) $post->ID,
@@ -617,7 +654,7 @@ function carveout_theme_get_cms_posts(string $post_type, int $limit = -1): array
             'datetime' => $date['datetime'],
             'title' => $post_title,
             'url' => $source_url ?: get_permalink($post),
-            'detailUrl' => add_query_arg('id', $post->ID, get_permalink($post)),
+            'detailUrl' => $detail_url,
             'image' => carveout_theme_post_image_url($post->ID),
             'body' => array_values(array_filter([wp_strip_all_tags(get_the_excerpt($post))])),
             'detailHtml' => apply_filters('the_content', $post->post_content),
@@ -651,8 +688,20 @@ function carveout_theme_get_livers(): array
         $items[] = [
             'name' => get_the_title($post),
             'category' => $category ?: '17LIVE',
-            'url' => (string) get_post_meta($post->ID, 'carveout_profile_url', true),
-            'instagramUrl' => (string) get_post_meta($post->ID, 'carveout_instagram_url', true),
+            'url' => carveout_theme_first_post_meta($post->ID, [
+                'carveout_profile_url',
+                'profile_url',
+                'liver_profile_url',
+                'carveout_liver_profile_url',
+                '_profile_url',
+            ]),
+            'instagramUrl' => carveout_theme_first_post_meta($post->ID, [
+                'carveout_instagram_url',
+                'instagram_url',
+                'liver_instagram_url',
+                'carveout_liver_instagram_url',
+                '_instagram_url',
+            ]),
             'image' => carveout_theme_post_image_url($post->ID),
         ];
     }
@@ -684,6 +733,14 @@ function carveout_theme_get_rankings(): array
                 $name = trim((string) get_post_meta($post->ID, carveout_theme_ranking_meta_key($group, $rank, 'name'), true));
                 $image = trim((string) get_post_meta($post->ID, carveout_theme_ranking_meta_key($group, $rank, 'image'), true));
                 $url = trim((string) get_post_meta($post->ID, carveout_theme_ranking_meta_key($group, $rank, 'url'), true));
+                if ($url === '') {
+                    $url = carveout_theme_first_post_meta($post->ID, [
+                        'carveout_profile_url',
+                        'profile_url',
+                        'liver_profile_url',
+                        'carveout_liver_profile_url',
+                    ]);
+                }
 
                 if ($name === '' && $image === '') {
                     continue;
@@ -715,7 +772,12 @@ function carveout_theme_get_rankings(): array
                 'category' => $legacy_category ?: $category,
                 'type' => $legacy_type ?: ($term_meta['type'] ?: '総合'),
                 'rank' => $legacy_rank,
-                'url' => (string) get_post_meta($post->ID, 'carveout_profile_url', true),
+                'url' => carveout_theme_first_post_meta($post->ID, [
+                    'carveout_profile_url',
+                    'profile_url',
+                    'liver_profile_url',
+                    'carveout_liver_profile_url',
+                ]),
                 'image' => carveout_theme_post_image_url($post->ID),
             ];
         }

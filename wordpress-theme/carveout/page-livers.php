@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CARVEOUT所属の17LIVEライバー一覧ページです。">
   <title>所属ライバー | CARVEOUT</title>
-  <link rel="stylesheet" href="<?php echo carveout_theme_asset('css/style.css?v=20260527-related3'); ?>">
+  <link rel="stylesheet" href="<?php echo carveout_theme_asset('css/style.css?v=20260529-livefix1'); ?>">
   <?php wp_head(); ?>
 </head>
 <body class="liver-list-page">
@@ -83,7 +83,7 @@
 </footer>
 
   <script src="<?php echo carveout_theme_asset('js/liver-data.js?v=20260522-liversall1'); ?>"></script>
-  <script src="<?php echo carveout_theme_asset('js/script.js?v=20260528-import1'); ?>"></script>
+  <script src="<?php echo carveout_theme_asset('js/script.js?v=20260529-livefix1'); ?>"></script>
   <?php wp_footer(); ?>
 </body>
 </html>

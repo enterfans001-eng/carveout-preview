@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ライバー事務所CARVEOUTについて紹介するABOUT詳細ページです。">
   <title>ABOUT | CARVEOUTについて</title>
-  <link rel="stylesheet" href="<?php echo carveout_theme_asset('css/style.css?v=20260527-related3'); ?>">
+  <link rel="stylesheet" href="<?php echo carveout_theme_asset('css/style.css?v=20260529-livefix1'); ?>">
   <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body class="wp-theme-carveout">
   <header class="site-header">
 <a class="site-logo" href="<?php echo carveout_theme_page_url('index'); ?>" aria-label="CARVEOUT トップへ">
   <img src="<?php echo carveout_theme_asset('assets/carveout-logo-horizontal-cropped.png'); ?>" alt="CARVEOUT">
@@ -122,7 +122,7 @@
   </div>
 </footer>
 
-  <script src="<?php echo carveout_theme_asset('js/script.js?v=20260528-import1'); ?>"></script>
+  <script src="<?php echo carveout_theme_asset('js/script.js?v=20260529-livefix1'); ?>"></script>
   <?php wp_footer(); ?>
 </body>
 </html>

@@ -12,10 +12,10 @@
       }
     } catch (error) {}
   </script>
-  <link rel="stylesheet" href="<?php echo carveout_theme_asset('css/style.css?v=20260527-related3'); ?>">
+  <link rel="stylesheet" href="<?php echo carveout_theme_asset('css/style.css?v=20260529-livefix1'); ?>">
   <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body class="wp-theme-carveout">
   <div class="site-loader" aria-hidden="true">
     <div class="site-loader__inner">
       <div class="site-loader__logo">
@@ -425,7 +425,7 @@
   <script src="<?php echo carveout_theme_asset('js/news-data.js?v=20260520-rankname1'); ?>"></script>
   <script src="<?php echo carveout_theme_asset('js/event-data.js?v=20260520-rankname1'); ?>"></script>
   <script src="<?php echo carveout_theme_asset('js/liver-data.js?v=20260522-liversall1'); ?>"></script>
-  <script src="<?php echo carveout_theme_asset('js/script.js?v=20260528-import1'); ?>"></script>
+  <script src="<?php echo carveout_theme_asset('js/script.js?v=20260529-livefix1'); ?>"></script>
   <?php wp_footer(); ?>
 </body>
 </html>

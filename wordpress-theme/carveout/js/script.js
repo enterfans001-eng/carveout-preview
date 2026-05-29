@@ -569,6 +569,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const preferCmsItems = (cmsList, fallbackList) => (
     Array.isArray(cmsList) && cmsList.length ? cmsList : (fallbackList || [])
   );
+  const normalizeLookupText = (value) => String(value || '')
+    .normalize('NFKC')
+    .replace(/\s+/g, '')
+    .toLowerCase();
+  const mergeCmsLivers = (cmsList, fallbackList) => {
+    const cms = Array.isArray(cmsList) ? cmsList : [];
+    const fallback = Array.isArray(fallbackList) ? fallbackList : [];
+
+    if (!cms.length) {
+      return fallback;
+    }
+
+    const fallbackByName = new Map(
+      fallback.map((item) => [normalizeLookupText(item.name), item])
+    );
+
+    return cms.map((item) => {
+      const fallbackItem = fallbackByName.get(normalizeLookupText(item.name)) || {};
+      return {
+        ...item,
+        category: item.category || fallbackItem.category || '17LIVE',
+        url: item.url || fallbackItem.url || '',
+        instagramUrl: item.instagramUrl || fallbackItem.instagramUrl || '',
+        image: item.image || fallbackItem.image || ''
+      };
+    });
+  };
   const newsItems = preferCmsItems(cmsItems.news, window.carveout17LiveNews);
   const eventItems = preferCmsItems(cmsItems.events, window.carveoutOfficeEventNews);
   const interviewItems = preferCmsItems(cmsItems.interviews, window.carveoutInterviews);
@@ -582,8 +609,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const getItemId = (item) => String(item?.id || getContentId(item?.url));
-  const getNewsDetailUrl = (item) => item.detailUrl || wpPageUrl(`news-detail.html?id=${getItemId(item)}`);
-  const getInterviewDetailUrl = (item) => item.detailUrl || wpPageUrl(`interview-detail.html?id=${getItemId(item)}`);
+  const getInternalDetailUrl = (page, item) => {
+    const id = getItemId(item);
+    return id ? wpPageUrl(`${page}.html?id=${id}`) : (item?.detailUrl || wpPageUrl(`${page}.html`));
+  };
+  const getNewsDetailUrl = (item) => getInternalDetailUrl('news-detail', item);
+  const getInterviewDetailUrl = (item) => getInternalDetailUrl('interview-detail', item);
   const createRankingCard = (item) => {
     const card = document.createElement('a');
     card.className = 'ranking-card';
@@ -1053,7 +1084,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const liverTrack = document.getElementById('featuredLiverTrack');
   const liverGrid = document.getElementById('allLiverGrid');
   const liverCategoryTabs = document.getElementById('liverCategoryTabs');
-  const liverItems = preferCmsItems(cmsItems.livers, window.carveout17LiveLivers);
+  const liverItems = mergeCmsLivers(cmsItems.livers, window.carveout17LiveLivers);
 
   if (liverTrack && Array.isArray(liverItems)) {
     const featuredItems = liverItems.slice(0, 6);
