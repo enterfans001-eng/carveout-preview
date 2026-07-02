@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHOWCART Logo Roughs</title>
+  <style>
+    :root {
+      --red: #c9141b;
+      --red-dark: #8f0d13;
+      --ink: #171717;
+      --muted: #666666;
+      --line: #dedede;
+      --paper: #ffffff;
+      --bg: #f6f5f2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 48px clamp(20px, 4vw, 64px);
+    }
+
+    header {
+      border-left: 8px solid var(--red);
+      margin: 0 auto 36px;
+      max-width: 1180px;
+      padding-left: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 14px 0 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1fr;
+      margin: 0 auto;
+      max-width: 1180px;
+    }
+
+    .card {
+      background: var(--paper);
+      border-top: 4px solid var(--red);
+      min-height: 330px;
+      padding: 26px;
+    }
+
+    .label {
+      align-items: baseline;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .label strong {
+      color: var(--red);
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .label span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    svg {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+
+    .note {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 22px 0 0;
+      padding-top: 16px;
+    }
+
+    @media (max-width: 820px) {
+      body {
+        padding: 32px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SHOWCART<br>Logo Roughs</h1>
+    <p>赤を軸に、ライブ配信・購買導線・クリエイター支援が伝わる方向性で6案作成。</p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <div class="label">
+        <strong>Plan A</strong>
+        <span>SC + Cart</span>
+      </div>
+      <svg viewBox="0 0 680 210" role="img" aria-label="SHOWCART ロゴ案A">
+        <rect x="16" y="28" width="154" height="154" rx="0" fill="#c9141b"/>
+        <path d="M54 79c13-22 53-27 78-6" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="square"/>
+        <path d="M134 85h-39l-11 48h58" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter"/>
+        <circle cx="92" cy="152" r="8" fill="#fff"/>
+        <circle cx="133" cy="152" r="8" fill="#fff"/>
+        <text x="205" y="105" fill="#171717" font-size="54" font-weight="800" letter-spacing="0">SHOWCART</text>
+        <text x="207" y="148" fill="#666666" font-size="22" font-weight="700">株式会社ショーカート</text>
+      </svg>
+      <p class="note">いちばん王道。サイトの左上や名刺に使いやすい、会社感の強い案。</p>
+    </section>
+
+    <section class="card">
+      <div class="label">
+        <strong>Plan B</strong>
+        <span>Live + Commerce</span>
+      </div>
+      <svg viewBox="0 0 680 210" role="img" aria-label="SHOWCART ロゴ案B">
+        <path d="M28 44h126v96H28z" fill="#c9141b"/>
+        <path d="M78 71l47 22-47 23z" fill="#fff"/>
+        <path d="M58 154h110l20-62h42" fill="none" stroke="#171717" stroke-width="13" stroke-linecap="square" stroke-linejoin="miter"/>
+        <circle cx="88" cy="176" r="10" fill="#171717"/>
+        <circle cx="160" cy="176" r="10" fill="#171717"/>
+        <text x="270" y="103" fill="#171717" font-size="52" font-weight="900" letter-spacing="0">SHOWCART</text>
+        <text x="272" y="145" fill="#c9141b" font-size="21" font-weight="800">LIVE COMMERCE COMPANY</text>
+      </svg>
+      <p class="note">配信の再生ボタンとカートを直球で表現。ライブコマース感が一番伝わる案。</p>
+    </section>
+
+    <section class="card">
+      <div class="label">
+        <strong>Plan C</strong>
+        <span>Wordmark</span>
+      </div>
+      <svg viewBox="0 0 680 210" role="img" aria-label="SHOWCART ロゴ案C">
+        <text x="20" y="112" fill="#171717" font-size="66" font-weight="900" letter-spacing="-1">SHOW</text>
+        <text x="260" y="112" fill="#c9141b" font-size="66" font-weight="900" letter-spacing="-1">CART</text>
+        <path d="M278 128h218l18-38h50" fill="none" stroke="#c9141b" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+        <circle cx="324" cy="150" r="8" fill="#c9141b"/>
+        <circle cx="474" cy="150" r="8" fill="#c9141b"/>
+        <text x="22" y="174" fill="#666666" font-size="22" font-weight="700">Creator support / SNS / Live commerce</text>
+      </svg>
+      <p class="note">タイポグラフィ中心。Webのヘッダーに置いた時にすっきり見える案。</p>
+    </section>
+
+    <section class="card">
+      <div class="label">
+        <strong>Plan D</strong>
+        <span>Signal Mark</span>
+      </div>
+      <svg viewBox="0 0 680 210" role="img" aria-label="SHOWCART ロゴ案D">
+        <rect x="22" y="35" width="142" height="142" fill="#171717"/>
+        <path d="M59 122c17 20 52 20 68 0 14-17 4-38-28-44-31-6-44-29-24-47 17-15 49-12 68 8" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="square"/>
+        <path d="M132 54c19 11 31 29 31 50s-12 39-31 50" fill="none" stroke="#c9141b" stroke-width="9" stroke-linecap="square"/>
+        <text x="205" y="103" fill="#171717" font-size="52" font-weight="900">SHOWCART</text>
+        <text x="207" y="145" fill="#666666" font-size="22" font-weight="700">発信を、購買につなぐ。</text>
+      </svg>
+      <p class="note">Sマークと配信電波を合わせた案。クリエイター支援会社っぽさが強め。</p>
+    </section>
+
+    <section class="card">
+      <div class="label">
+        <strong>Plan E</strong>
+        <span>Japanese Corporate</span>
+      </div>
+      <svg viewBox="0 0 680 210" role="img" aria-label="株式会社ショーカート ロゴ案E">
+        <path d="M24 38h138v138H24z" fill="#fff" stroke="#c9141b" stroke-width="10"/>
+        <path d="M57 76h61l18 36H73l-12 32h78" fill="none" stroke="#c9141b" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter"/>
+        <circle cx="85" cy="158" r="7" fill="#c9141b"/>
+        <circle cx="130" cy="158" r="7" fill="#c9141b"/>
+        <text x="205" y="100" fill="#171717" font-size="45" font-weight="900">株式会社ショーカート</text>
+        <text x="207" y="143" fill="#c9141b" font-size="25" font-weight="900">SHOWCART Inc.</text>
+      </svg>
+      <p class="note">日本語社名を主役にした案。契約書、会社概要、営業資料に馴染みやすい方向。</p>
+    </section>
+
+    <section class="card">
+      <div class="label">
+        <strong>Plan F</strong>
+        <span>Minimal Badge</span>
+      </div>
+      <svg viewBox="0 0 680 210" role="img" aria-label="SHOWCART ロゴ案F">
+        <rect x="24" y="48" width="118" height="118" fill="#c9141b"/>
+        <text x="49" y="120" fill="#fff" font-size="54" font-weight="900">SC</text>
+        <path d="M52 136h70" stroke="#fff" stroke-width="8"/>
+        <text x="178" y="96" fill="#171717" font-size="48" font-weight="900">SHOWCART</text>
+        <path d="M180 118h330" stroke="#c9141b" stroke-width="6"/>
+        <text x="180" y="154" fill="#666666" font-size="23" font-weight="700">Live commerce & creator management</text>
+      </svg>
+      <p class="note">小さくしても読めるバッジ型。SNSアイコンやfaviconにも展開しやすい案。</p>
+    </section>
+  </main>
+</body>
+</html>
