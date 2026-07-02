@@ -446,6 +446,8 @@ a {
 
 .company .section-heading,
 .company-list {
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--max);
 }
 
@@ -469,7 +471,11 @@ a {
 }
 
 .company-list dd {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin: 0;
+  text-align: center;
 }
 
 .empty-value {
@@ -647,6 +653,11 @@ a {
     gap: 6px;
     grid-template-columns: 1fr;
     padding: 20px;
+  }
+
+  .company-list dd {
+    display: block;
+    text-align: left;
   }
 
   .site-footer {
