@@ -309,14 +309,23 @@ a {
 }
 
 .section-heading {
-  max-width: 720px;
+  border-left: 6px solid var(--red);
+  max-width: none;
+  padding-left: 26px;
+}
+
+.section-heading p {
+  font-size: clamp(1.25rem, 2vw, 1.85rem);
+  margin-bottom: 20px;
 }
 
 .section-heading h2 {
   color: var(--ink);
-  font-size: clamp(1.85rem, 3.4vw, 3rem);
-  line-height: 1.35;
+  font-size: clamp(2.25rem, 4.25vw, 4rem);
+  letter-spacing: 0;
+  line-height: 1.18;
   margin: 0;
+  white-space: nowrap;
 }
 
 .intro {
@@ -324,30 +333,12 @@ a {
   display: block;
 }
 
-.intro .section-heading {
-  border-left: 6px solid var(--red);
-  max-width: none;
-  padding-left: 26px;
-}
-
-.intro .section-heading p {
-  font-size: clamp(1.25rem, 2vw, 1.85rem);
-  margin-bottom: 20px;
-}
-
-.intro .section-heading h2 {
-  font-size: clamp(2.25rem, 4.25vw, 4rem);
-  letter-spacing: 0;
-  line-height: 1.18;
-  white-space: nowrap;
-}
-
 .intro-text {
   border-top: 1px solid var(--line);
   color: var(--text);
-  margin-left: auto;
+  margin-left: 0;
   margin-top: 48px;
-  max-width: 760px;
+  max-width: 880px;
   padding-top: 28px;
 }
 
@@ -363,32 +354,6 @@ a {
   background: var(--background);
 }
 
-.business-inner {
-  align-items: end;
-  display: grid;
-  gap: 48px;
-  grid-template-columns: minmax(0, 0.86fr) minmax(360px, 0.74fr);
-  margin: 0 auto;
-  max-width: var(--max);
-}
-
-.business-visuals {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: 1fr 0.72fr;
-}
-
-.business-visuals img {
-  aspect-ratio: 4 / 3;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.business-visuals img:last-child {
-  margin-top: 40px;
-}
-
 .service-list {
   background: #ffffff;
   border-top: 3px solid var(--red);
@@ -397,11 +362,12 @@ a {
 }
 
 .service-row {
+  align-items: center;
   border-bottom: 1px solid var(--line);
   display: grid;
   gap: 34px;
-  grid-template-columns: 180px minmax(230px, 0.55fr) minmax(0, 1fr);
-  min-height: 178px;
+  grid-template-columns: 160px minmax(0, 1fr) 260px;
+  min-height: 220px;
   padding: 42px 0;
 }
 
@@ -414,34 +380,46 @@ a {
   padding-left: 30px;
 }
 
-.service-row h3 {
+.service-copy h3 {
   color: var(--ink);
-  font-size: 1.14rem;
+  font-size: clamp(1.28rem, 2vw, 1.9rem);
   line-height: 1.5;
-  margin: 0;
+  margin: 0 0 12px;
 }
 
-.service-row p,
+.service-copy p,
 .strength-copy p,
 .metric p {
   color: var(--muted);
   margin: 0;
 }
 
+.service-photo {
+  margin: 0;
+  overflow: hidden;
+}
+
+.service-photo img {
+  aspect-ratio: 4 / 3;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
 .strength {
   background: #ffffff;
-  display: grid;
-  gap: 56px;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  display: block;
 }
 
 .strength-copy p {
+  max-width: 880px;
   margin-top: 24px;
 }
 
 .metric-list {
   border-top: 1px solid var(--line);
   display: grid;
+  margin-top: 46px;
 }
 
 .metric {
@@ -470,8 +448,6 @@ a {
 
 .company .section-heading,
 .company-list {
-  margin-left: auto;
-  margin-right: auto;
   max-width: var(--max);
 }
 
@@ -532,14 +508,13 @@ a {
     right: auto;
   }
 
-  .intro,
-  .business-inner,
-  .strength {
-    grid-template-columns: 1fr;
+  .service-row {
+    grid-template-columns: 140px minmax(0, 1fr);
   }
 
-  .business-inner {
-    align-items: start;
+  .service-photo {
+    grid-column: 2;
+    max-width: 360px;
   }
 }
 
@@ -624,16 +599,16 @@ a {
     padding-top: 72px;
   }
 
-  .intro .section-heading {
+  .section-heading {
     padding-left: 18px;
   }
 
-  .intro .section-heading p {
+  .section-heading p {
     font-size: 1.05rem;
     margin-bottom: 14px;
   }
 
-  .intro .section-heading h2 {
+  .section-heading h2 {
     font-size: 2.25rem;
     line-height: 1.35;
     white-space: normal;
@@ -641,18 +616,6 @@ a {
 
   .intro-text {
     margin-top: 30px;
-  }
-
-  .business-inner {
-    gap: 34px;
-  }
-
-  .business-visuals {
-    grid-template-columns: 1fr;
-  }
-
-  .business-visuals img:last-child {
-    display: none;
   }
 
   .service-row {
@@ -667,8 +630,14 @@ a {
     padding-left: 18px;
   }
 
-  .service-row p {
+  .service-copy p,
+  .service-photo {
     grid-column: 2;
+  }
+
+  .service-photo {
+    margin-top: 12px;
+    max-width: none;
   }
 
   .metric {

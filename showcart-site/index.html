@@ -70,41 +70,60 @@
     </section>
 
     <section class="business" id="business">
-      <div class="business-inner">
-        <div class="section-heading">
-          <p>Business</p>
-          <h2>事業内容</h2>
-        </div>
-        <div class="business-visuals" aria-label="ショーカートの事業イメージ">
-          <img src="assets/business-stream.jpg" alt="配信環境のイメージ">
-          <img src="assets/business-meeting.jpg" alt="企業案件の打ち合わせイメージ">
-        </div>
+      <div class="section-heading">
+        <p>Business</p>
+        <h2>事業内容</h2>
       </div>
       <div class="service-list">
         <article class="service-row">
           <span class="service-number">01</span>
-          <h3>ライブ配信マネジメント</h3>
-          <p>配信スケジュール、企画設計、目標設定、活動の振り返りまで伴走し、継続できる運用を整えます。</p>
+          <div class="service-copy">
+            <h3>ライブ配信マネジメント</h3>
+            <p>配信スケジュール、企画設計、目標設定、活動の振り返りまで伴走し、継続できる運用を整えます。</p>
+          </div>
+          <figure class="service-photo">
+            <img src="assets/business-stream.jpg" alt="配信環境のイメージ">
+          </figure>
         </article>
         <article class="service-row">
           <span class="service-number">02</span>
-          <h3>SNS・ショート動画支援</h3>
-          <p>TikTok、Instagram、YouTube Shortsなどを活用し、配信外でも認知とファン接点を作ります。</p>
+          <div class="service-copy">
+            <h3>SNS・ショート動画支援</h3>
+            <p>TikTok、Instagram、YouTube Shortsなどを活用し、配信外でも認知とファン接点を作ります。</p>
+          </div>
+          <figure class="service-photo">
+            <img src="assets/business-social.jpg" alt="SNS運用のイメージ">
+          </figure>
         </article>
         <article class="service-row">
           <span class="service-number">03</span>
-          <h3>インフルエンサー支援</h3>
-          <p>プロフィール、発信テーマ、ブランドとの相性を整理し、個性が伝わる活動設計をサポートします。</p>
+          <div class="service-copy">
+            <h3>インフルエンサー支援</h3>
+            <p>プロフィール、発信テーマ、ブランドとの相性を整理し、個性が伝わる活動設計をサポートします。</p>
+          </div>
+          <figure class="service-photo">
+            <img src="assets/business-influencer.jpg" alt="クリエイター支援のイメージ">
+          </figure>
         </article>
         <article class="service-row">
           <span class="service-number">04</span>
-          <h3>企業案件・タイアップ提案</h3>
-          <p>クリエイターの活動規模やキャラクターに合う企業案件、イベント、コラボレーション機会を提案します。</p>
+          <div class="service-copy">
+            <h3>企業案件・タイアップ提案</h3>
+            <p>クリエイターの活動規模やキャラクターに合う企業案件、イベント、コラボレーション機会を提案します。</p>
+          </div>
+          <figure class="service-photo">
+            <img src="assets/business-meeting.jpg" alt="企業案件の打ち合わせイメージ">
+          </figure>
         </article>
         <article class="service-row">
           <span class="service-number">05</span>
-          <h3>ライブコマース事業</h3>
-          <p>商品理解、配信構成、販売導線、配信後の改善までを支援し、視聴体験と購買体験をつなぎます。</p>
+          <div class="service-copy">
+            <h3>ライブコマース事業</h3>
+            <p>商品理解、配信構成、販売導線、配信後の改善までを支援し、視聴体験と購買体験をつなぎます。</p>
+          </div>
+          <figure class="service-photo">
+            <img src="assets/business-commerce.jpg" alt="ライブコマース事業のイメージ">
+          </figure>
         </article>
       </div>
     </section>
@@ -191,7 +210,7 @@
     });
 
     const revealTargets = document.querySelectorAll(
-      '.hero-content, .hero-business, .intro .section-heading, .intro-text, .business-inner, .service-row, .strength-copy, .metric, .company .section-heading, .company-list'
+      '.hero-content, .hero-business, .section-heading, .intro-text, .service-row, .strength-copy, .metric, .company-list'
     );
 
     revealTargets.forEach((target, index) => {
