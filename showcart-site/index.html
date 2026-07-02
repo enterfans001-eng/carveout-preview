@@ -189,6 +189,30 @@
         siteNav.classList.remove('is-open');
       }
     });
+
+    const revealTargets = document.querySelectorAll(
+      '.hero-content, .hero-business, .intro .section-heading, .intro-text, .business-inner, .service-row, .strength-copy, .metric, .company .section-heading, .company-list'
+    );
+
+    revealTargets.forEach((target, index) => {
+      target.classList.add('js-reveal');
+      target.style.animationDelay = `${Math.min(index * 55, 260)}ms`;
+    });
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+      revealTargets.forEach((target) => revealObserver.observe(target));
+    } else {
+      revealTargets.forEach((target) => target.classList.add('is-visible'));
+    }
   </script>
 </body>
 </html>
