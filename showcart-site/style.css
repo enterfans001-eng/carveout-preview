@@ -410,8 +410,10 @@ a {
 }
 
 .strength-copy p {
-  max-width: 880px;
+  font-size: clamp(0.9rem, 1vw, 1rem);
   margin-top: 24px;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .metric-list {
@@ -471,11 +473,8 @@ a {
 }
 
 .company-list dd {
-  align-items: center;
-  display: flex;
-  justify-content: center;
   margin: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .empty-value {
@@ -656,8 +655,11 @@ a {
   }
 
   .company-list dd {
-    display: block;
     text-align: left;
+  }
+
+  .strength-copy p {
+    white-space: normal;
   }
 
   .site-footer {
