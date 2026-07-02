@@ -66,6 +66,10 @@ a {
   text-decoration: none;
 }
 
+.sp-only {
+  display: none;
+}
+
 .site-header {
   align-items: center;
   background: rgba(255, 255, 255, 0.96);
@@ -327,9 +331,7 @@ a {
 }
 
 .section-heading {
-  border-left: 6px solid var(--red);
   max-width: none;
-  padding-left: 26px;
 }
 
 .section-heading p {
@@ -591,12 +593,22 @@ a {
   }
 
   .hero h1 {
-    font-size: 2.12rem;
-    line-height: 1.35;
+    font-size: 1.55rem;
+    line-height: 1.36;
   }
 
   .hero-lead {
-    font-size: 0.96rem;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    max-width: 100%;
+  }
+
+  .sp-only {
+    display: inline;
+  }
+
+  .pc-only {
+    display: none;
   }
 
   .hero-media {
@@ -631,17 +643,17 @@ a {
   }
 
   .section-heading {
-    padding-left: 18px;
+    padding-left: 0;
   }
 
   .section-heading p {
-    font-size: 1.05rem;
+    font-size: 0.94rem;
     margin-bottom: 14px;
   }
 
   .section-heading h2 {
-    font-size: 2.25rem;
-    line-height: 1.35;
+    font-size: 1.78rem;
+    line-height: 1.42;
     white-space: normal;
   }
 
@@ -650,25 +662,55 @@ a {
   }
 
   .service-row {
-    gap: 12px;
-    grid-template-columns: 96px 1fr;
+    align-items: start;
+    gap: 14px 18px;
+    grid-template-columns: 72px minmax(0, 1fr);
     min-height: 150px;
-    padding: 30px 0;
+    min-width: 0;
+    padding: 30px 20px;
   }
 
   .service-number {
-    font-size: 3.5rem;
-    padding-left: 18px;
+    font-size: 2.95rem;
+    grid-column: 1;
+    grid-row: 1;
+    padding-left: 0;
+    padding-top: 2px;
   }
 
-  .service-copy p,
-  .service-photo {
+  .service-copy {
+    display: contents;
+  }
+
+  .service-copy h3 {
+    align-self: center;
+    font-size: 1.42rem;
     grid-column: 2;
+    grid-row: 1;
+    line-height: 1.34;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .service-copy p {
+    grid-column: 1 / -1;
+    line-height: 1.9;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: left;
+    width: 100%;
   }
 
   .service-photo {
+    grid-column: 1 / -1;
     margin-top: 12px;
     max-width: none;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .service-photo img {
+    width: 100%;
   }
 
   .metric {
