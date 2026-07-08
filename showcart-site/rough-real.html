@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="株式会社ショーカートのサイトデザインラフです。">
+  <title>SHOWCART Design Rough</title>
+  <style>
+    :root {
+      --red: #c9141b;
+      --red-deep: #9f1117;
+      --ink: #161616;
+      --text: #333333;
+      --muted: #777777;
+      --line: #d8d8d8;
+      --paper: #ffffff;
+      --ground: #f4f3f0;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--ground);
+      color: var(--text);
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      font-size: 16px;
+      line-height: 1.9;
+      margin: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .sp-only {
+      display: none;
+    }
+
+    .header {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.96);
+      border-top: 4px solid var(--red);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      height: 76px;
+      justify-content: space-between;
+      left: 0;
+      padding: 0 clamp(22px, 4vw, 58px);
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: block;
+      height: 42px;
+      overflow: visible;
+      width: 174px;
+    }
+
+    .logo text {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .logo-show {
+      fill: var(--ink);
+    }
+
+    .logo-cart,
+    .logo-dot {
+      fill: var(--red);
+    }
+
+    .logo-line {
+      fill: none;
+      stroke: var(--red);
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+      stroke-width: 8;
+    }
+
+    .nav {
+      align-items: center;
+      display: flex;
+      gap: 30px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .hero {
+      background: #111111;
+      color: #ffffff;
+      min-height: 760px;
+      overflow: hidden;
+      padding: 170px clamp(22px, 5vw, 70px) 80px;
+      position: relative;
+    }
+
+    .hero::after {
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.28) 58%, rgba(0, 0, 0, 0.1));
+      content: "";
+      inset: 0;
+      position: absolute;
+      z-index: 0;
+    }
+
+    .hero img {
+      height: 100%;
+      inset: 0;
+      object-fit: cover;
+      position: absolute;
+      width: 100%;
+    }
+
+    .hero-inner {
+      margin: 0 auto;
+      max-width: var(--max);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label,
+    .section-label {
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin: 0 0 22px;
+      text-transform: uppercase;
+    }
+
+    .hero-label {
+      color: #ffffff;
+      opacity: 0.76;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 5vw, 4.75rem);
+      letter-spacing: 0;
+      line-height: 1.06;
+      margin: 0;
+      max-width: 1080px;
+    }
+
+    .hero-lead {
+      border-top: 1px solid rgba(255, 255, 255, 0.38);
+      font-size: clamp(1rem, 1.35vw, 1.15rem);
+      margin: 34px 0 0;
+      max-width: 760px;
+      padding-top: 26px;
+    }
+
+    .section {
+      padding: 110px clamp(22px, 5vw, 70px);
+    }
+
+    .section-inner {
+      margin: 0 auto;
+      max-width: var(--max);
+    }
+
+    .section-head {
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 0.72fr 1fr;
+      padding-bottom: 32px;
+    }
+
+    .section-head h2 {
+      color: var(--ink);
+      font-size: clamp(2.35rem, 4.6vw, 4.7rem);
+      letter-spacing: 0;
+      line-height: 1.08;
+      margin: 0;
+    }
+
+    .section-head p:last-child {
+      margin: 0;
+    }
+
+    .message {
+      background: var(--paper);
+    }
+
+    .message .section-head {
+      grid-template-columns: 1fr;
+    }
+
+    .message .section-head > p:last-child {
+      margin-left: auto;
+      max-width: 720px;
+    }
+
+    .message-body {
+      display: grid;
+      gap: 44px;
+      grid-template-columns: 0.72fr 1fr;
+      padding-top: 42px;
+    }
+
+    .message-body strong {
+      color: var(--ink);
+      display: block;
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .message-body p {
+      margin: 0;
+    }
+
+    .business {
+      background: var(--ground);
+    }
+
+    .business-list {
+      margin-top: 42px;
+    }
+
+    .business-row {
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: clamp(24px, 4vw, 54px);
+      grid-template-columns: 90px minmax(0, 1fr) minmax(240px, 340px);
+      padding: 34px 0;
+    }
+
+    .business-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .business-number {
+      color: var(--red);
+      font-size: clamp(2.2rem, 4vw, 4.2rem);
+      font-weight: 900;
+      line-height: 0.95;
+    }
+
+    .business-copy h3 {
+      color: var(--ink);
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      line-height: 1.35;
+      margin: 0 0 14px;
+    }
+
+    .business-copy p {
+      margin: 0;
+    }
+
+    .business-photo {
+      align-self: stretch;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .business-photo img {
+      aspect-ratio: 4 / 3;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .strength {
+      background: #181818;
+      color: #ffffff;
+    }
+
+    .strength .section-label,
+    .strength .business-number {
+      color: #ff3a42;
+    }
+
+    .strength .section-head {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .strength h2,
+    .strength strong {
+      color: #ffffff;
+    }
+
+    .strength-grid {
+      display: grid;
+      gap: 0;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 46px;
+    }
+
+    .strength-item {
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 28px 28px 0 0;
+    }
+
+    .strength-item span {
+      color: #ff3a42;
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .strength-item p {
+      color: rgba(255, 255, 255, 0.72);
+      margin: 10px 0 0;
+    }
+
+    .company {
+      background: var(--paper);
+    }
+
+    .company-table {
+      border-top: 3px solid var(--red);
+      margin-top: 44px;
+    }
+
+    .company-table div {
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 220px 1fr;
+      padding: 22px 0;
+    }
+
+    .company-table dt {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .company-table dd {
+      margin: 0;
+    }
+
+    .footer {
+      align-items: center;
+      background: #111111;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      padding: 34px clamp(22px, 5vw, 70px);
+    }
+
+    .footer .logo-show {
+      fill: #ffffff;
+    }
+
+    .footer small {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    @media (max-width: 800px) {
+      .sp-only {
+        display: inline;
+      }
+
+      .pc-only {
+        display: none;
+      }
+
+      .header {
+        height: 66px;
+        padding: 0 20px;
+      }
+
+      .logo {
+        height: 36px;
+        width: 148px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 690px;
+        padding: 120px 22px 56px;
+      }
+
+      .hero::after {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.42));
+      }
+
+      .hero h1 {
+        font-size: 1.62rem;
+        line-height: 1.34;
+      }
+
+      .hero-lead {
+        font-size: 0.9rem;
+        line-height: 1.85;
+      }
+
+      .section {
+        padding: 76px 22px;
+      }
+
+      .section-head,
+      .message-body {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head h2 {
+        font-size: 2rem;
+        line-height: 1.32;
+      }
+
+      .business-row {
+        gap: 14px 18px;
+        grid-template-columns: 64px minmax(0, 1fr);
+        padding: 30px 0;
+      }
+
+      .business-number {
+        font-size: 2.55rem;
+      }
+
+      .business-copy h3 {
+        font-size: 1.24rem;
+        margin-top: 4px;
+      }
+
+      .business-copy p,
+      .business-photo {
+        grid-column: 1 / -1;
+      }
+
+      .business-photo {
+        margin-top: 10px;
+      }
+
+      .strength-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .strength-item {
+        padding: 24px 0 0;
+      }
+
+      .company-table div {
+        gap: 4px;
+        grid-template-columns: 1fr;
+        padding: 18px 0;
+      }
+
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="#top" aria-label="SHOWCART トップへ">
+      <svg class="logo" viewBox="0 0 520 128" role="img" aria-label="SHOWCART">
+        <text class="logo-show" x="0" y="72">SHOW</text>
+        <text class="logo-cart" x="208" y="72">CART</text>
+        <path class="logo-line" d="M222 88h186l15-32h42"/>
+        <circle class="logo-dot" cx="262" cy="108" r="7"/>
+        <circle class="logo-dot" cx="386" cy="108" r="7"/>
+      </svg>
+    </a>
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a href="#message">Message</a>
+      <a href="#business">Business</a>
+      <a href="#strength">Strength</a>
+      <a href="#company">Company</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img src="assets/hero-live-commerce.png" alt="">
+      <div class="hero-inner">
+        <p class="hero-label">SHOWCART Inc.</p>
+        <h1>ライブ配信と購買体験を、<br>成果につながる設計へ。</h1>
+        <p class="hero-lead">
+          株式会社ショーカートは、<br class="sp-only">配信者・インフルエンサーの活動支援から<br class="sp-only">
+          企業案件、<br class="pc-only">ライブコマースまでを一貫して支援する<br class="sp-only">
+          クリエイターカンパニーです。
+        </p>
+      </div>
+    </section>
+
+    <section class="section message" id="message">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="section-label">Message</p>
+            <h2>人の熱量が伝わる場所を、<br class="pc-only"><br class="sp-only">ビジネスの入口に。</h2>
+          </div>
+          <p>発信者の人柄や商品の魅力が、視聴者へまっすぐ届く場所。その熱量を、継続的な活動と売上につながる仕組みへ整えます。</p>
+        </div>
+        <div class="message-body">
+          <strong>クリエイターと企業のあいだに、任せられる運用体制をつくる。</strong>
+          <p>
+            ライブ配信やショート動画は、<br class="sp-only">視聴者との距離が近いからこそ、<br class="sp-only">
+            発信者の人柄や商品の魅力がそのまま届きます。<br class="pc-only"><br class="sp-only">
+            私たちは、その強さを一過性の盛り上がりで終わらせず、<br class="sp-only">
+            継続的な活動と売上につながる仕組みへ整えます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section business" id="business">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="section-label">Business</p>
+            <h2>事業内容</h2>
+          </div>
+          <p>配信者の活動支援から、企業案件、ライブコマースまで。実行に近いところで、必要な運用を組み立てます。</p>
+        </div>
+        <div class="business-list">
+          <article class="business-row">
+            <span class="business-number">01</span>
+            <div class="business-copy">
+              <h3>ライブ配信マネジメント</h3>
+              <p>配信スケジュール、企画設計、目標設定、活動の振り返りまで伴走し、継続できる運用を整えます。</p>
+            </div>
+            <figure class="business-photo">
+              <img src="assets/business-01-management.png" alt="ライブ配信マネジメントの打ち合わせイメージ">
+            </figure>
+          </article>
+          <article class="business-row">
+            <span class="business-number">02</span>
+            <div class="business-copy">
+              <h3>SNS・ショート動画支援</h3>
+              <p>TikTok、Instagram、YouTube Shortsなどを活用し、配信外でも認知とファン接点を作ります。</p>
+            </div>
+            <figure class="business-photo">
+              <img src="assets/business-02-sns.png" alt="信頼関係を築く握手のイメージ">
+            </figure>
+          </article>
+          <article class="business-row">
+            <span class="business-number">03</span>
+            <div class="business-copy">
+              <h3>インフルエンサー支援</h3>
+              <p>プロフィール、発信テーマ、ブランドとの相性を整理し、個性が伝わる活動設計をサポートします。</p>
+            </div>
+            <figure class="business-photo">
+              <img src="assets/business-influencer.jpg" alt="クリエイター支援のイメージ">
+            </figure>
+          </article>
+          <article class="business-row">
+            <span class="business-number">04</span>
+            <div class="business-copy">
+              <h3>企業案件・タイアップ提案</h3>
+              <p>クリエイターの活動規模やキャラクターに合う企業案件、イベント、コラボレーション機会を提案します。</p>
+            </div>
+            <figure class="business-photo">
+              <img src="assets/business-meeting.jpg" alt="企業案件の打ち合わせイメージ">
+            </figure>
+          </article>
+          <article class="business-row">
+            <span class="business-number">05</span>
+            <div class="business-copy">
+              <h3>ライブコマース事業</h3>
+              <p>商品理解、配信構成、販売導線、配信後の改善までを支援し、視聴体験と購買体験をつなぎます。</p>
+            </div>
+            <figure class="business-photo">
+              <img src="assets/business-05-commerce.png" alt="ライブコマース配信現場のイメージ">
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section strength" id="strength">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="section-label">Strength</p>
+            <h2>少人数だからこそ、<br>近い距離で速く動く。</h2>
+          </div>
+          <p>大きな仕組みに当てはめるのではなく、クリエイターの個性や企業の目的に合わせて柔軟に設計します。</p>
+        </div>
+        <div class="strength-grid">
+          <div class="strength-item">
+            <span>Planning</span>
+            <strong>企画から設計</strong>
+            <p>配信テーマと投稿導線を整理</p>
+          </div>
+          <div class="strength-item">
+            <span>Operation</span>
+            <strong>案件運用</strong>
+            <p>ブランドとの相性を重視</p>
+          </div>
+          <div class="strength-item">
+            <span>Commerce</span>
+            <strong>販売支援</strong>
+            <p>配信後の改善まで伴走</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section company" id="company">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="section-label">Company</p>
+            <h2>会社情報</h2>
+          </div>
+          <p>クリエイター支援とライブコマース領域で、継続的に成果へつながる運用を支援します。</p>
+        </div>
+        <dl class="company-table">
+          <div>
+            <dt>会社名</dt>
+            <dd>株式会社ショーカート</dd>
+          </div>
+          <div>
+            <dt>本社所在地</dt>
+            <dd>〒150-0043 東京都渋谷区道玄坂1-10-8 渋谷道玄坂東急ビル2F</dd>
+          </div>
+          <div>
+            <dt>設立年月</dt>
+            <dd>2025年7月</dd>
+          </div>
+          <div>
+            <dt>従業員数</dt>
+            <dd>5人</dd>
+          </div>
+          <div>
+            <dt>事業内容</dt>
+            <dd>ライブ配信マネジメント / SNS運用支援 / インフルエンサー支援 / 企業案件提案 / ライブコマース事業</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <svg class="logo" viewBox="0 0 520 128" role="img" aria-label="SHOWCART">
+      <text class="logo-show" x="0" y="72">SHOW</text>
+      <text class="logo-cart" x="208" y="72">CART</text>
+      <path class="logo-line" d="M222 88h186l15-32h42"/>
+      <circle class="logo-dot" cx="262" cy="108" r="7"/>
+      <circle class="logo-dot" cx="386" cy="108" r="7"/>
+    </svg>
+    <small>&copy; SHOWCART Inc.</small>
+  </footer>
+</body>
+</html>
